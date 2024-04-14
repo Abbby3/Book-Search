@@ -1,16 +1,13 @@
 import './App.scss'
 import BookShelf from './components/BookShelf/BookShelf'
-import SearchBar from './components/SearchBar/SearchBar'
 import fakeBooks from './data/fakeBooks'
+import BookHeader from './components/BookHeader/BookHeader'
 
 
 function App() {
   return (
-    <div> 
-      <header>
-        <h1>Book Search</h1>
-        <SearchBar />
-      </header>
+    <div className='bookSearch'> 
+      <BookHeader />
       <BookShelf fakeBooks={fakeBooks}/>
     </div>
   )

@@ -1,5 +1,5 @@
 import React from "react";
-import Book from "../Book/Book";
+import Book from "./Book/Book";
 import styles from "./BookShelf.module.scss";
 
 const BookShelf = ({ fakeBooks }) => {
