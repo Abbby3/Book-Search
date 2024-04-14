@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./BookShelf.module.scss";
+import styles from "../styles/BookShelf.module.scss";
 
 const BookShelf = ({ bookList, loading, onSelect }) => {
   const handleClick = (book) => {

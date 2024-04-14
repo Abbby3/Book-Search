@@ -1,4 +1,4 @@
-import styles from "./SearchSelect.module.scss";
+import styles from "../../styles/SearchSelect.module.scss";
 import { useForm } from "react-hook-form";
 
 const SearchSelect = ({ selectedOptions, setSelectedOptions }) => {

@@ -1,0 +1,9 @@
+@import "exports";
+
+.head {
+  @include card;
+  margin: 40px;
+  @include flex(column);
+  gap: 10px;
+  @include txtShadow(white, black)
+}

@@ -1,0 +1,52 @@
+$primary-colour: #f5a9b8;
+$secondary-colour: #5bcefa;
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin txtShadow($text, $shadow) {
+  color: $text;
+  text-shadow: 0px 0px 3px $shadow;
+}
+
+@mixin button {
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 1px;
+  @include txtShadow(black, white);
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    border: 2px solid black;
+  }
+}
+
+@mixin card {
+  background-color: $primary-colour;
+  border: 5px solid white;
+  border-radius: 40px;
+  padding: 20px;
+}
+
+@mixin loading {
+  .loader {
+    width: 40px;
+    height: 40px;
+    --ball: no-repeat radial-gradient(farthest-side, #f5a9b8 92%, #0000);
+    background: var(--ball) top, var(--ball) left, var(--ball) right, var(--ball) bottom;
+    background-size: 14px 14px;
+    animation: spin 1.2s infinite;
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(0.5turn);
+    }
+  }
+}

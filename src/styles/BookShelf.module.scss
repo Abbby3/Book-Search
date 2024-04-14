@@ -1,0 +1,29 @@
+@import "exports";
+
+.shelf {
+  max-width: 1000px;
+  @include flex(row);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+@include loading;
+
+.book {
+  width: 200px;
+  height: 300px;
+  background-color: $primary-colour;
+  @include flex(column);
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.text {
+  text-align: center;
+  width: 150px;
+  margin-bottom: 5px;
+  @include txtShadow(white, black);
+}

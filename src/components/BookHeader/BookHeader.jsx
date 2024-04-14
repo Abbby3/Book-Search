@@ -1,6 +1,6 @@
-import styles from "./BookHeader.module.scss";
-import SearchSelect from "./SearchSelect/SearchSelect";
-import SearchBar from "./SearchBar/SearchBar";
+import styles from "../../styles/BookHeader.module.scss";
+import SearchSelect from "./SearchSelect";
+import SearchBar from "./SearchBar";
 import { useState } from "react";
 
 const BookHeader = ({ onSearch, loading, setLoading }) => {

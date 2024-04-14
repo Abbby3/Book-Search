@@ -1,8 +1,8 @@
-import "./App.scss";
-import BookShelf from "./components/BookShelf/BookShelf";
+import "./styles/App.scss";
+import BookShelf from "./components/BookShelf";
 import BookHeader from "./components/BookHeader/BookHeader";
 import { useState } from "react";
-import BookDetails from "./components/BookDetails/BookDetails";
+import BookDetails from "./components/BookDetails";
 
 function App() {
   const [bookList, setBookList] = useState([]);

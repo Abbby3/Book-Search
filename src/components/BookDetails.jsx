@@ -1,5 +1,5 @@
-import linkImg from "../../assets/link.png";
-import styles from "./BookDetails.module.scss";
+import linkImg from "../assets/link.png";
+import styles from "../styles/BookDetails.module.scss";
 
 const BookDetails = ({ selectedBook, setSelectedBook }) => {
   const handleClose = () => {

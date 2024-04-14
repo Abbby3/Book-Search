@@ -1,0 +1,18 @@
+@import "exports";
+
+.searchForm {
+  @include flex(row);
+  gap: 5px;
+}
+.searchText {
+  width: 130px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 1px;
+}
+.searchBtn {
+  @include button;
+}
+.error{
+  @include txtShadow(black, white)
+}

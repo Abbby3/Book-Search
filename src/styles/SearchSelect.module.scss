@@ -1,0 +1,13 @@
+@import "exports";
+
+.searchSelect {
+  @include flex(row);
+  column-gap: 10px;
+}
+.selectForm {
+  @include flex(row);
+  column-gap: 10px;
+}
+.selectCheck {
+  margin: 5px;
+}
