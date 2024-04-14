@@ -11,6 +11,9 @@ The users can then click on a book to view more information, including a link to
 The application also notifies users of errors based on either the search terms or the API.
 It also includes an updated design convention and colour scheme to that of older projects of mine.
 
+As with other projects, the UI is designed with a balance of clarity and convenience in mind. this app uses two forms, one being the option selector, and the other being the search input. Whereas just having the search input would be more convenient, having the second effectively communicates with the user that they can choose some or all of the options without needing instructions.
+Similarly, the books, when rendered, only show the thumbnails in order to avoid clutter, but grow in size when hovered over, to communicate that the books can be clicked on without the user needing to focus in on their cursor.
+
 Future iterations of this should ideally include:
 
 - functionality to favourite or save books.
