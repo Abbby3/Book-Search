@@ -1,6 +1,29 @@
 .shelf {
+  max-width: 1000px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
+  margin-bottom: 40px;
+}
+.loader {
+  width: 40px;
+  height: 40px;
+  --ball: no-repeat radial-gradient(farthest-side, #f5a9b8 92%, #0000);
+  background: var(--ball) top, var(--ball) left, var(--ball) right, var(--ball) bottom;
+  background-size: 14px 14px;
+  animation: spin 1.2s infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(0.5turn);
+  }
+}
+.book{
+  width: 200px;
+  transition: transform 0.2s ease;
+  &:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 }

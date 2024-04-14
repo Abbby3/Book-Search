@@ -1,13 +1,16 @@
 import React from "react";
-import Book from "./Book/Book";
 import styles from "./BookShelf.module.scss";
 
-const BookShelf = ({ fakeBooks }) => {
+const BookShelf = ({ bookList, loading }) => {
   return (
     <div className={styles.shelf}>
-      {fakeBooks.map((book) => (
-        <Book key={book.id} book={book} />
-      ))}
+      {loading ? (
+        <div className={styles.loader}></div>
+      ) : (
+        bookList.map((book, index) => (
+          <img key={index} src={book.thumbnail} alt={book.title} className={styles.book} />
+        ))
+      )}
     </div>
   );
 };

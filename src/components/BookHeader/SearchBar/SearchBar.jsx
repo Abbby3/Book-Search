@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./SearchBar.module.scss";
 
-const SearchBar = ({ selectedOptions }) => {
+const SearchBar = ({ selectedOptions, onSearch, loading, setLoading }) => {
   const { register, handleSubmit } = useForm({
     defaultValues: {
       title: "",
@@ -10,9 +10,8 @@ const SearchBar = ({ selectedOptions }) => {
       publisher: "",
     },
   });
-  const [loading, setLoading] = useState(false);
 
-  const onSubmit = (terms) => {
+  const onSubmit = async (terms) => {
     setLoading(true);
 
     for (const term in terms) {
@@ -25,30 +24,30 @@ const SearchBar = ({ selectedOptions }) => {
       selectedOptions.publisher ? terms.publisher && "+inpublisher:" + terms.publisher : ""
     }`;
 
-    const requestList = async () => {
-      try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        if (data.items) {
-          const bookList = data.items.map((item) => {
-            const bookObject = {
-              title: item.volumeInfo.title,
-              authors: item.volumeInfo.authors,
-              thumbnail: item.volumeInfo.imageLinks.thumbnail,
-              selfLink: item.selfLink,
-            };
-            return bookObject;
-          });
-
-          console.log(bookList);
-        }
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
+    try {
+      const res = await fetch(apiUrl);
+      const data = await res.json();
+      if (data.items) {
+        const bookList = data.items.map((item) => {
+          const bookObject = {
+            title: item.volumeInfo.title,
+            authors: item.volumeInfo.authors || [],
+            thumbnail: item.volumeInfo.imageLinks?.thumbnail || "",
+            description: item.volumeInfo.description || "",
+            publisher: item.volumeInfo.publisher || "",
+            publishedDate: item.volumeInfo.publishedDate || "",
+            saleLink: item.saleInfo.buyLink || "",
+          };
+          return bookObject;
+        });
+        console.log(bookList);
+        onSearch(bookList);
       }
-    };
-    requestList();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
