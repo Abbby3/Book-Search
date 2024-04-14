@@ -7,16 +7,22 @@ import BookDetails from "./components/BookDetails/BookDetails";
 function App() {
   const [bookList, setBookList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
 
-  const handleSearch = (data) => {
-    setBookList(data);
+  const handleSearch = (bookList) => {
+    setBookList(bookList);
+  };
+  const handleSelect = (selectedBook) => {
+    setSelectedBook(selectedBook);
   };
 
   return (
     <div className="bookSearch">
       <BookHeader onSearch={handleSearch} loading={loading} setLoading={setLoading} />
-      <BookShelf bookList={bookList} loading={loading} />
-      <BookDetails />
+      <BookShelf bookList={bookList} loading={loading} onSelect={handleSelect} />
+      {selectedBook && (
+        <BookDetails selectedBook={selectedBook} setSelectedBook={setSelectedBook} />
+      )}
     </div>
   );
 }

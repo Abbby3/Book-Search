@@ -32,7 +32,7 @@ const SearchBar = ({ selectedOptions, onSearch, loading, setLoading }) => {
           const bookObject = {
             title: item.volumeInfo.title,
             authors: item.volumeInfo.authors || [],
-            thumbnail: item.volumeInfo.imageLinks?.thumbnail || "",
+            thumbnail: item.volumeInfo.imageLinks.thumbnail || "",
             description: item.volumeInfo.description || "",
             publisher: item.volumeInfo.publisher || "",
             publishedDate: item.volumeInfo.publishedDate || "",
@@ -40,7 +40,6 @@ const SearchBar = ({ selectedOptions, onSearch, loading, setLoading }) => {
           };
           return bookObject;
         });
-        console.log(bookList);
         onSearch(bookList);
       }
     } catch (err) {
