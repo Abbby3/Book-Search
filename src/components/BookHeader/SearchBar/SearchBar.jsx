@@ -14,21 +14,34 @@ const SearchBar = ({ selectedOptions }) => {
 
   const onSubmit = (terms) => {
     setLoading(true);
+
     for (const term in terms) {
       terms[term] = terms[term].trim().replace(" ", "+");
     }
 
     const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${
-      terms.title && "intitle:" + terms.title
-    }${terms.author && "+inauthor:" + terms.author}${
-      terms.publisher && "+inpublisher:" + terms.publisher
+      selectedOptions.title ? terms.title && "intitle:" + terms.title : ""
+    }${selectedOptions.author ? terms.author && "+inauthor:" + terms.author : ""}${
+      selectedOptions.publisher ? terms.publisher && "+inpublisher:" + terms.publisher : ""
     }`;
 
     const requestList = async () => {
       try {
         const res = await fetch(apiUrl);
-        const bookList = await res.json();
-        console.log(bookList);
+        const data = await res.json();
+        if (data.items) {
+          const bookList = data.items.map((item) => {
+            const bookObject = {
+              title: item.volumeInfo.title,
+              authors: item.volumeInfo.authors,
+              thumbnail: item.volumeInfo.imageLinks.thumbnail,
+              selfLink: item.selfLink,
+            };
+            return bookObject;
+          });
+
+          console.log(bookList);
+        }
       } catch (err) {
         console.error(err);
       } finally {
