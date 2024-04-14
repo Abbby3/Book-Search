@@ -1,30 +1,29 @@
+import React from "react";
 import styles from "../../styles/BookHeader.module.scss";
 import SearchSelect from "./SearchSelect";
 import SearchBar from "./SearchBar";
-import { useState } from "react";
+import BookHeaderLogic from "../../containers/BookHeaderLogic";
 
 const BookHeader = ({ onSearch, loading, setLoading }) => {
-  const [selectedOptions, setSelectedOptions] = useState({
-    title: false,
-    author: false,
-    publisher: false,
+  const { selectedOptions, setSelectedOptions, handleSearch } = BookHeaderLogic({
+    onSearch,
+    setLoading,
   });
-
-  const handleSearch = (data) => {
-    onSearch(data);
-    setLoading(false);
-  };
 
   return (
     <header className={styles.head}>
       <h1>Book Search</h1>
       <p>On this page, you can lookup books by title, author, and publisher.</p>
-      <SearchSelect selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions} />
+      <SearchSelect
+        options={["title", "author", "publisher"]}
+        selectedOptions={selectedOptions}
+        setSelectedOptions={setSelectedOptions}
+      />
       <SearchBar
         selectedOptions={selectedOptions}
         onSearch={handleSearch}
-        loading={loading} 
-        setLoading={setLoading} 
+        loading={loading}
+        setLoading={setLoading}
       />
     </header>
   );

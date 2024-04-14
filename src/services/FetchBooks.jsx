@@ -1,4 +1,4 @@
-const fetchBooks = async (searchOptions, setLoading, onSearch, setErrorMsg) => {
+const FetchBooks = async (searchOptions, selectedOptions, setLoading, onSearch, setErrorMsg) => {
   setErrorMsg("");
   onSearch([]);
   setLoading(true);
@@ -7,10 +7,19 @@ const fetchBooks = async (searchOptions, setLoading, onSearch, setErrorMsg) => {
     searchOptions[term] = searchOptions[term].trim().replace(" ", "+");
   }
 
-  const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${
-    searchOptions.title ? searchOptions.title && "intitle:" + searchOptions.title : ""
-  }${searchOptions.author ? searchOptions.author && "+inauthor:" + searchOptions.author : ""}${
-    searchOptions.publisher
+  const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=
+  ${
+    selectedOptions.title && searchOptions.title
+      ? searchOptions.title && "intitle:" + searchOptions.title
+      : ""
+  }
+  ${
+    selectedOptions.author && searchOptions.author
+      ? searchOptions.author && "+inauthor:" + searchOptions.author
+      : ""
+  }
+  ${
+    selectedOptions.publisher && searchOptions.publisher
       ? searchOptions.publisher && "+inpublisher:" + searchOptions.publisher
       : ""
   }`;
@@ -43,4 +52,4 @@ const fetchBooks = async (searchOptions, setLoading, onSearch, setErrorMsg) => {
   }
 };
 
-export default fetchBooks;
+export default FetchBooks;

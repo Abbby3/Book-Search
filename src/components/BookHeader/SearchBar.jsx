@@ -1,22 +1,12 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import styles from "../../styles/SearchBar.module.scss";
-import fetchBooks from "../../services/FetchBooks";
+import SearchBarLogic from "../../containers/SearchBarLogic";
 
 const SearchBar = ({ selectedOptions, onSearch, loading, setLoading }) => {
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      title: "",
-      author: "",
-      publisher: "",
-    },
+  const { register, handleSubmit, onSubmit, errorMsg } = SearchBarLogic({
+    selectedOptions,
+    onSearch,
+    setLoading,
   });
-
-  const [errorMsg, setErrorMsg] = useState("");
-
-  const onSubmit = async (terms) => {
-    await fetchBooks(terms, setLoading, onSearch, setErrorMsg);
-  };
 
   return (
     <>
