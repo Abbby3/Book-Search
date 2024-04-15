@@ -13,6 +13,7 @@ It also includes an updated design convention and colour scheme to that of older
 
 As with other projects, the UI is designed with a balance of clarity and convenience in mind. this app uses two forms, one being the option selector, and the other being the search input. Whereas just having the search input would be more convenient, having the second effectively communicates with the user that they can choose some or all of the options without needing instructions.
 Similarly, the books, when rendered, only show the thumbnails in order to avoid clutter, but grow in size when hovered over, to communicate that the books can be clicked on without the user needing to focus in on their cursor.
+There are other small decisions that were made for the purposes of clarity or convenience, such as the text for notable text such as errors or links being a different colour, an external link icon to communicate the destination of the link, text shadow to give greater contrast to the text agains the background, etc.
 
 Future iterations of this should ideally include:
 
