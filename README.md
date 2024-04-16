@@ -23,6 +23,7 @@ Future iterations of this should ideally include:
 - general optimisation and larger focus on reusability of containers.
 - better form validation 
 - scroll to info on clicking book / book info appearing at book level.
+- text outline over text shadow for better contrast with background
 
 # Tools
 
