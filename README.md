@@ -20,7 +20,9 @@ Future iterations of this should ideally include:
 - functionality to favourite or save books.
 - removing text from field inputs when the option is deselected.
 - updated date format
-- improved optimisation, including reusable components, such as forms.
+- general optimisation and larger focus on reusability of containers.
+- better form validation 
+- scroll to info on clicking book / book info appearing at book level.
 
 # Tools
 
